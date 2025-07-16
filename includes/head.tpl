@@ -1,8 +1,16 @@
 <!-- Styling -->
-{\WHMCS\View\Asset::fontCssInclude('open-sans-family.css')}
-{\WHMCS\View\Asset::fontCssInclude('raleway-family.css')}
-<link href="{assetPath file='all.min.css'}?v={$versionHash}" rel="stylesheet">
+<!-- Modern Fonts from Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<!-- DoubleSpeed Host CSS Framework -->
+<link href="{assetPath file='style.css'}?v={$versionHash}" rel="stylesheet">
 <link href="{$WEB_ROOT}/assets/css/fontawesome-all.min.css" rel="stylesheet">
+
+<!-- Bootstrap compatibility fallback -->
+<link href="{assetPath file='all.min.css'}?v={$versionHash}" rel="stylesheet">
+
 {assetExists file="custom.css"}
 <link href="{$__assetPath__}" rel="stylesheet">
 {/assetExists}

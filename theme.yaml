@@ -1,11 +1,31 @@
-# WHMCS Six Theme Configuration File
+# WHMCS Six Template Redesign Configuration File
 
-name: "Six"
-description: "The Default Theme for WHMCS Version 6.0"
-author: "WHMCS Limited"
+name: "Six Redesigned"
+description: "Modern dark tech-inspired WHMCS template with DoubleSpeedHost design elements"
+author: "DoubleSpeed Host Team"
+version: "1.0.0"
 properties:
   serverSidePagination: false # Defines client side will handle pagination
+  primaryColor: "neon-green" # Primary accent color
+  darkTheme: true # Enable dark theme mode
 provides:
-  bootstrap: 3.4.1
+  tailwindcss: 3.4.17
   jquery: 1.12.4
   fontawesome: 5.10.1
+  fonts:
+    - family: "Orbitron"
+      weights: [400, 700, 900]
+    - family: "Roboto" 
+      weights: [300, 400, 500, 700]
+config:
+  colorScheme:
+    primary: "#00ff88" # Neon Green
+    secondary: "#007bff" # Electric Blue
+    accent: "#9b59b6" # Cyber Purple
+    dark: "#121212" # Dark Background
+    darkAlt: "#1a1a1a" # Dark Background Alt
+    surface: "#2a2a2a" # Dark Surface
+  animations:
+    enabled: true
+    glow: true
+    float: true
