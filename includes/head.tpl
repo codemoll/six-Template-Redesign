@@ -3,6 +3,10 @@
 {\WHMCS\View\Asset::fontCssInclude('raleway-family.css')}
 <link href="{assetPath file='all.min.css'}?v={$versionHash}" rel="stylesheet">
 <link href="{$WEB_ROOT}/assets/css/fontawesome-all.min.css" rel="stylesheet">
+
+<!-- DoubleSpeed Theme CSS -->
+<link href="{$WEB_ROOT}/templates/{$template}/css/style.css?v={$versionHash}" rel="stylesheet">
+
 {assetExists file="custom.css"}
 <link href="{$__assetPath__}" rel="stylesheet">
 {/assetExists}
@@ -24,6 +28,9 @@
     {if $captcha}{$captcha->getPageJs()}{/if}
 </script>
 <script src="{assetPath file='scripts.min.js'}?v={$versionHash}"></script>
+
+<!-- DoubleSpeed Theme JavaScript -->
+<script src="{$WEB_ROOT}/templates/{$template}/js/theme.js?v={$versionHash}"></script>
 
 {if $templatefile == "viewticket" && !$loggedin}
   <meta name="robots" content="noindex" />
