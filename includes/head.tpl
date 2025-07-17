@@ -4,8 +4,11 @@
 <link href="{assetPath file='all.min.css'}?v={$versionHash}" rel="stylesheet">
 <link href="{$WEB_ROOT}/assets/css/fontawesome-all.min.css" rel="stylesheet">
 
-<!-- DoubleSpeed Theme CSS -->
-<link href="{$WEB_ROOT}/templates/{$template}/css/style.css?v={$versionHash}" rel="stylesheet">
+<!-- DoubleSpeed Modular CSS Framework -->
+<link href="{$WEB_ROOT}/templates/{$template}/css/doublespeed.css?v={$versionHash}" rel="stylesheet">
+<link href="{$WEB_ROOT}/templates/{$template}/css/doublespeed-six.css?v={$versionHash}" rel="stylesheet">
+<link href="{$WEB_ROOT}/templates/{$template}/css/doublespeed-custom.css?v={$versionHash}" rel="stylesheet">
+<link href="{$WEB_ROOT}/templates/{$template}/css/doublespeed-responsive.css?v={$versionHash}" rel="stylesheet">
 
 {assetExists file="custom.css"}
 <link href="{$__assetPath__}" rel="stylesheet">
