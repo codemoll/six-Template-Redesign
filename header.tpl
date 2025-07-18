@@ -47,6 +47,6 @@
         {include file="$template/includes/navbar.tpl"}
     {/if}
     
-    <main class="main-content {if !isset($templatefile.shownavbar) || $templatefile.shownavbar !== false}pt-5{/if}">
+    <main class="main-content">
 
         
