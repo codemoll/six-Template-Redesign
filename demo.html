@@ -24,16 +24,55 @@
 </head>
 
 <body class="bg-dark">
-    <!-- Current navbar include would go here but it's incomplete -->
-    <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Support</a></li>
-        <li><a href="#">Contact</a></li>
-        <li><a href="#">Login</a></li>
-    </ul>
+    <!-- DoubleSpeed Host Navigation Bar -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ds-navbar-collapse" aria-expanded="false" aria-controls="ds-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <span class="brand-text">
+                        <span class="brand-primary">DoubleSpeed</span><span class="brand-secondary">Host</span>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="ds-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Services <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fas fa-server"></i> Web Hosting</a></li>
+                            <li><a href="#"><i class="fas fa-cloud"></i> Cloud Servers</a></li>
+                            <li><a href="#"><i class="fas fa-shield-alt"></i> SSL Certificates</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><i class="fas fa-globe"></i> Domain Registration</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                
+                <!-- Right side navbar items -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" class="navbar-btn-outline">Login</a></li>
+                    <li><a href="#" class="navbar-btn-primary">Sign Up</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
     
-    <main class="main-content pt-5">
+    <main class="main-content">
         <!-- Hero Section -->
         <section class="hero-section d-flex align-items-center justify-content-center position-relative">
             <!-- Animated Background Effects -->
@@ -58,6 +97,38 @@
                                 Learn More
                             </a>
                         </div>
+                        
+                        <!-- Stats -->
+                        <div class="row hero-stats mt-5">
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-number text-primary">99.9%</div>
+                                <div class="stat-label text-light">Uptime Guarantee</div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-number text-info">24/7</div>
+                                <div class="stat-label text-light">Expert Support</div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-number text-warning">15+</div>
+                                <div class="stat-label text-light">Years Experience</div>
+                            </div>
+                            <div class="col-6 col-md-3 mb-3">
+                                <div class="stat-number text-primary">10K+</div>
+                                <div class="stat-label text-light">Happy Customers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Features Section to test scrolling -->
+        <section id="features" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <h2 class="text-white mb-4">Our Features</h2>
+                        <p class="text-light">Experience the power of modern web hosting.</p>
                     </div>
                 </div>
             </div>
@@ -67,5 +138,7 @@
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Local navbar functionality -->
+    <script src="js/navbar.js"></script>
 </body>
 </html>
