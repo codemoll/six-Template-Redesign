@@ -1,5 +1,5 @@
-{* DoubleSpeed Host Navigation Bar - Bootstrap 3.4.1 Compatible *}
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+{* DoubleSpeed Host Navigation Bar - Enhanced Modern Design *}
+<nav class="navbar navbar-default navbar-fixed-top navbar-enhanced" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -9,13 +9,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{$WEB_ROOT}/">
+            <a class="navbar-brand enhanced-brand" href="{$WEB_ROOT}/">
                 {if $logoUrl}
                     <img src="{$logoUrl}" alt="{$companyname}" class="navbar-logo">
                 {else}
-                    <span class="brand-text">
-                        <span class="brand-primary">DoubleSpeed</span><span class="brand-secondary">Host</span>
-                    </span>
+                    <div class="brand-container">
+                        <div class="brand-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="brand-text">
+                            <span class="brand-primary">DoubleSpeed</span><span class="brand-secondary">Host</span>
+                        </div>
+                    </div>
                 {/if}
             </a>
         </div>
@@ -51,21 +56,69 @@
             <!-- Right side navbar items -->
             <ul class="nav navbar-nav navbar-right">
                 {if $loggedin}
-                    <li class="dropdown">
+                    <!-- Notifications Badge -->
+                    <li class="dropdown notifications-dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user-circle"></i> {$clientsdetails.firstname} {$clientsdetails.lastname} <span class="caret"></span>
+                            <i class="fas fa-bell notification-icon"></i>
+                            <span class="notification-badge">3</span>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="{$WEB_ROOT}/clientarea.php"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=details"><i class="fas fa-user"></i> My Account</a></li>
-                            <li><a href="{$WEB_ROOT}/supporttickets.php"><i class="fas fa-life-ring"></i> Support Tickets</a></li>
+                        <ul class="dropdown-menu notifications-menu">
+                            <li class="notification-header">
+                                <h6>Notifications</h6>
+                            </li>
+                            <li><a href="#"><i class="fas fa-info-circle text-info"></i> Service renewal reminder</a></li>
+                            <li><a href="#"><i class="fas fa-ticket-alt text-warning"></i> Support ticket updated</a></li>
+                            <li><a href="#"><i class="fas fa-credit-card text-success"></i> Payment received</a></li>
+                            <li class="notification-footer">
+                                <a href="#">View all notifications</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <!-- User Profile Dropdown -->
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle user-profile-trigger" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name">{$clientsdetails.firstname} {$clientsdetails.lastname}</span>
+                                <span class="user-role">Premium Customer</span>
+                            </div>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu user-menu">
+                            <li class="user-menu-header">
+                                <div class="user-details">
+                                    <div class="user-avatar-large">
+                                        <i class="fas fa-user-circle"></i>
+                                    </div>
+                                    <div class="user-info-detailed">
+                                        <strong>{$clientsdetails.firstname} {$clientsdetails.lastname}</strong>
+                                        <small>{$clientsdetails.email}</small>
+                                    </div>
+                                </div>
+                            </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="{$WEB_ROOT}/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php?action=details"><i class="fas fa-user-edit"></i> <span>My Account</span></a></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php?action=services"><i class="fas fa-server"></i> <span>My Services</span></a></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php?action=domains"><i class="fas fa-globe"></i> <span>My Domains</span></a></li>
+                            <li><a href="{$WEB_ROOT}/supporttickets.php"><i class="fas fa-life-ring"></i> <span>Support Tickets</span></a></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php?action=invoices"><i class="fas fa-file-invoice"></i> <span>Billing & Invoices</span></a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{$WEB_ROOT}/clientarea.php?action=security"><i class="fas fa-shield-alt"></i> <span>Security Settings</span></a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{$WEB_ROOT}/logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
                         </ul>
                     </li>
                 {else}
-                    <li><a href="{$WEB_ROOT}/login.php" class="navbar-btn-outline">Login</a></li>
-                    <li><a href="{$WEB_ROOT}/register.php" class="navbar-btn-primary">Sign Up</a></li>
+                    <li><a href="{$WEB_ROOT}/login.php" class="navbar-btn-outline">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a></li>
+                    <li><a href="{$WEB_ROOT}/register.php" class="navbar-btn-primary">
+                        <i class="fas fa-user-plus"></i> Sign Up
+                    </a></li>
                 {/if}
             </ul>
         </div><!-- /.navbar-collapse -->
