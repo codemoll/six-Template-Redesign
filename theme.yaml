@@ -65,7 +65,7 @@ features:
   - "Dark tech-inspired design"
   - "Advanced mega menu with user profile dropdown"
   - "Responsive layout with mobile-first approach"
-  - "Tailwind-inspired CSS framework"
+  - "Modular CSS framework (doublespeed.css + doublespeed-six.css)"
   - "Glow effects and smooth animations"
   - "Modern typography (Orbitron + Roboto)"
   - "Enhanced client area dashboard"
