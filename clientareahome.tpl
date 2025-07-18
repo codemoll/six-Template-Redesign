@@ -1,87 +1,204 @@
 {include file="$template/includes/flashmessage.tpl"}
 
-<div class="dashboard-welcome card-dark">
-    <h2 class="font-orbitron glow-text">Welcome back, {if isset($clientsdetails.firstname)}{$clientsdetails.firstname}{else}User{/if}!</h2>
-    <p class="welcome-text">Manage your hosting services, domains, and support tickets from your dashboard.</p>
-</div>
-
-<div class="tiles clearfix">
-    <div class="row">
-        <div class="col-sm-3 col-xs-6 tile" onclick="window.location='clientarea.php?action=services'">
-            <a href="clientarea.php?action=services" class="tile-link">
-                <div class="tile-content">
-                    <div class="icon neon-green"><i class="fas fa-cube animate-float"></i></div>
-                    <div class="stat">{$clientsstats.productsnumactive}</div>
-                    <div class="title">{$LANG.navservices}</div>
-                    <div class="highlight"></div>
-                </div>
+<!-- Enhanced Welcome Section -->
+<div class="dashboard-welcome-enhanced">
+    <div class="welcome-container">
+        <div class="welcome-content">
+            <div class="welcome-icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <div class="welcome-text">
+                <h1 class="welcome-title">
+                    Welcome back, <span class="user-name-highlight">{if isset($clientsdetails.firstname)}{$clientsdetails.firstname}{else}User{/if}</span>!
+                </h1>
+                <p class="welcome-subtitle">
+                    Manage your hosting services, domains, and support tickets from your comprehensive dashboard.
+                </p>
+            </div>
+        </div>
+        <div class="welcome-actions">
+            <a href="clientarea.php?action=services" class="btn btn-primary-enhanced">
+                <i class="fas fa-plus"></i> Add Service
+            </a>
+            <a href="supporttickets.php?action=open" class="btn btn-outline-enhanced">
+                <i class="fas fa-life-ring"></i> Get Support
             </a>
         </div>
+    </div>
+</div>
+
+<!-- Enhanced Dashboard Tiles -->
+<div class="dashboard-tiles-enhanced">
+    <div class="row">
+        <div class="col-sm-3 col-xs-6">
+            <div class="tile-enhanced services-tile" onclick="window.location='clientarea.php?action=services'">
+                <div class="tile-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <div class="tile-content">
+                    <div class="tile-number">{$clientsstats.productsnumactive}</div>
+                    <div class="tile-label">{$LANG.navservices}</div>
+                    <div class="tile-sublabel">Active Services</div>
+                </div>
+                <div class="tile-action">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        
         {if $clientsstats.numdomains || $registerdomainenabled || $transferdomainenabled}
-            <div class="col-sm-3 col-xs-6 tile" onclick="window.location='clientarea.php?action=domains'">
-                <a href="clientarea.php?action=domains" class="tile-link">
-                    <div class="tile-content">
-                        <div class="icon electric-blue"><i class="fas fa-globe animate-float"></i></div>
-                        <div class="stat">{$clientsstats.numactivedomains}</div>
-                        <div class="title">{$LANG.navdomains}</div>
-                        <div class="highlight"></div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="tile-enhanced domains-tile" onclick="window.location='clientarea.php?action=domains'">
+                    <div class="tile-icon">
+                        <i class="fas fa-globe-americas"></i>
                     </div>
-                </a>
+                    <div class="tile-content">
+                        <div class="tile-number">{$clientsstats.numactivedomains}</div>
+                        <div class="tile-label">{$LANG.navdomains}</div>
+                        <div class="tile-sublabel">Active Domains</div>
+                    </div>
+                    <div class="tile-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
             </div>
         {elseif $condlinks.affiliates && $clientsstats.isAffiliate}
-            <div class="col-sm-3 col-xs-6 tile" onclick="window.location='affiliates.php'">
-                <a href="affiliates.php" class="tile-link">
-                    <div class="tile-content">
-                        <div class="icon cyber-purple"><i class="fas fa-shopping-cart animate-float"></i></div>
-                        <div class="stat">{$clientsstats.numaffiliatesignups}</div>
-                        <div class="title">{$LANG.affiliatessignups}</div>
-                        <div class="highlight"></div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="tile-enhanced affiliates-tile" onclick="window.location='affiliates.php'">
+                    <div class="tile-icon">
+                        <i class="fas fa-handshake"></i>
                     </div>
-                </a>
+                    <div class="tile-content">
+                        <div class="tile-number">{$clientsstats.numaffiliatesignups}</div>
+                        <div class="tile-label">{$LANG.affiliatessignups}</div>
+                        <div class="tile-sublabel">Referrals</div>
+                    </div>
+                    <div class="tile-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
             </div>
         {else}
-            <div class="col-sm-3 col-xs-6 tile" onclick="window.location='clientarea.php?action=quotes'">
-                <a href="clientarea.php?action=quotes" class="tile-link">
-                    <div class="tile-content">
-                        <div class="icon electric-blue"><i class="far fa-file-alt animate-float"></i></div>
-                        <div class="stat">{$clientsstats.numquotes}</div>
-                        <div class="title">{$LANG.quotes}</div>
-                        <div class="highlight"></div>
+            <div class="col-sm-3 col-xs-6">
+                <div class="tile-enhanced quotes-tile" onclick="window.location='clientarea.php?action=quotes'">
+                    <div class="tile-icon">
+                        <i class="fas fa-file-contract"></i>
                     </div>
-                </a>
+                    <div class="tile-content">
+                        <div class="tile-number">{$clientsstats.numquotes}</div>
+                        <div class="tile-label">{$LANG.quotes}</div>
+                        <div class="tile-sublabel">Pending Quotes</div>
+                    </div>
+                    <div class="tile-action">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
             </div>
         {/if}
-        <div class="col-sm-3 col-xs-6 tile" onclick="window.location='supporttickets.php'">
-            <a href="supporttickets.php" class="tile-link">
+        
+        <div class="col-sm-3 col-xs-6">
+            <div class="tile-enhanced tickets-tile" onclick="window.location='supporttickets.php'">
+                <div class="tile-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
                 <div class="tile-content">
-                    <div class="icon warning"><i class="fas fa-comments animate-float"></i></div>
-                    <div class="stat">{$clientsstats.numactivetickets}</div>
-                    <div class="title">{$LANG.navtickets}</div>
-                    <div class="highlight"></div>
+                    <div class="tile-number">{$clientsstats.numactivetickets}</div>
+                    <div class="tile-label">{$LANG.navtickets}</div>
+                    <div class="tile-sublabel">Open Tickets</div>
+                </div>
+                <div class="tile-action">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-3 col-xs-6">
+            <div class="tile-enhanced invoices-tile" onclick="window.location='clientarea.php?action=invoices'">
+                <div class="tile-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="tile-content">
+                    <div class="tile-number">{$clientsstats.numunpaidinvoices}</div>
+                    <div class="tile-label">{$LANG.navinvoices}</div>
+                    <div class="tile-sublabel">
+                        {if $clientsstats.numunpaidinvoices > 0}Pending Payment{else}All Paid{/if}
+                    </div>
+                </div>
+                <div class="tile-action">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Enhanced Search Section -->
+<div class="dashboard-search-enhanced">
+    <form role="form" method="post" action="clientarea.php?action=kbsearch">
+        <div class="search-container">
+            <div class="search-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <input type="text" name="search" class="form-control search-input" placeholder="{$LANG.clientHomeSearchKb}" />
+            <button type="submit" class="search-button">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+<!-- Quick Actions Section -->
+<div class="quick-actions-section">
+    <h3 class="section-title">
+        <i class="fas fa-bolt"></i> Quick Actions
+    </h3>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <a href="cart.php" class="quick-action-card">
+                <div class="action-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Order New Service</h4>
+                    <p>Browse our hosting packages</p>
                 </div>
             </a>
         </div>
-        <div class="col-sm-3 col-xs-6 tile" onclick="window.location='clientarea.php?action=invoices'">
-            <a href="clientarea.php?action=invoices" class="tile-link">
-                <div class="tile-content">
-                    <div class="icon success"><i class="fas fa-credit-card animate-float"></i></div>
-                    <div class="stat">{$clientsstats.numunpaidinvoices}</div>
-                    <div class="title">{$LANG.navinvoices}</div>
-                    <div class="highlight"></div>
+        <div class="col-md-3 col-sm-6">
+            <a href="supporttickets.php?action=open" class="quick-action-card">
+                <div class="action-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Open Support Ticket</h4>
+                    <p>Get help from our experts</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <a href="clientarea.php?action=addfunds" class="quick-action-card">
+                <div class="action-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Add Funds</h4>
+                    <p>Top up your account balance</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <a href="clientarea.php?action=details" class="quick-action-card">
+                <div class="action-icon">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+                <div class="action-content">
+                    <h4>Account Settings</h4>
+                    <p>Update your profile</p>
                 </div>
             </a>
         </div>
     </div>
 </div>
-
-<form role="form" method="post" action="clientarea.php?action=kbsearch">
-    <div class="row">
-        <div class="col-md-12 home-kb-search">
-            <input type="text" name="search" class="form-control input-lg" placeholder="{$LANG.clientHomeSearchKb}" />
-            <i class="fas fa-search"></i>
-        </div>
-    </div>
-</form>
 
 {foreach from=$addons_html item=addon_html}
     <div>
@@ -89,56 +206,62 @@
     </div>
 {/foreach}
 
-<div class="client-home-panels">
+<!-- Enhanced Client Home Panels -->
+<div class="client-home-panels-enhanced">
     <div class="row">
         <div class="col-sm-12">
 
             {function name=outputHomePanels}
-                <div menuItemName="{$item->getName()}" class="panel panel-default panel-accent-{$item->getExtra('color')}{if $item->getClass()} {$item->getClass()}{/if}"{if $item->getAttribute('id')} id="{$item->getAttribute('id')}"{/if}>
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            {if $item->getExtra('btn-link') && $item->getExtra('btn-text')}
-                                <div class="pull-right">
-                                    <a href="{$item->getExtra('btn-link')}" class="btn btn-default bg-color-{$item->getExtra('color')} btn-xs">
-                                        {if $item->getExtra('btn-icon')}<i class="{$item->getExtra('btn-icon')}"></i>{/if}
-                                        {$item->getExtra('btn-text')}
-                                    </a>
-                                </div>
-                            {/if}
-                            {if $item->hasIcon()}<i class="{$item->getIcon()}"></i>&nbsp;{/if}
-                            {$item->getLabel()}
-                            {if $item->hasBadge()}&nbsp;<span class="badge">{$item->getBadge()}</span>{/if}
-                        </h3>
+                <div menuItemName="{$item->getName()}" class="panel-enhanced panel-accent-{$item->getExtra('color')}{if $item->getClass()} {$item->getClass()}{/if}"{if $item->getAttribute('id')} id="{$item->getAttribute('id')}"{/if}>
+                    <div class="panel-header-enhanced">
+                        <div class="panel-title-container">
+                            {if $item->hasIcon()}<i class="{$item->getIcon()} panel-icon"></i>{/if}
+                            <h3 class="panel-title-enhanced">{$item->getLabel()}</h3>
+                            {if $item->hasBadge()}<span class="panel-badge">{$item->getBadge()}</span>{/if}
+                        </div>
+                        {if $item->getExtra('btn-link') && $item->getExtra('btn-text')}
+                            <div class="panel-actions">
+                                <a href="{$item->getExtra('btn-link')}" class="btn-panel-action">
+                                    {if $item->getExtra('btn-icon')}<i class="{$item->getExtra('btn-icon')}"></i>{/if}
+                                    {$item->getExtra('btn-text')}
+                                </a>
+                            </div>
+                        {/if}
                     </div>
                     {if $item->hasBodyHtml()}
-                        <div class="panel-body">
+                        <div class="panel-body-enhanced">
                             {$item->getBodyHtml()}
                         </div>
                     {/if}
                     {if $item->hasChildren()}
-                        <div class="list-group{if $item->getChildrenAttribute('class')} {$item->getChildrenAttribute('class')}{/if}">
+                        <div class="panel-list-enhanced{if $item->getChildrenAttribute('class')} {$item->getChildrenAttribute('class')}{/if}">
                             {foreach $item->getChildren() as $childItem}
                                 {if $childItem->getUri()}
-                                    <a menuItemName="{$childItem->getName()}" href="{$childItem->getUri()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}{if $childItem->isCurrent()} active{/if}"{if $childItem->getAttribute('dataToggleTab')} data-toggle="tab"{/if}{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if} id="{$childItem->getId()}">
-                                        {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                                        {$childItem->getLabel()}
-                                        {if $childItem->hasBadge()}&nbsp;<span class="badge">{$childItem->getBadge()}</span>{/if}
+                                    <a menuItemName="{$childItem->getName()}" href="{$childItem->getUri()}" class="panel-list-item{if $childItem->getClass()} {$childItem->getClass()}{/if}{if $childItem->isCurrent()} active{/if}"{if $childItem->getAttribute('dataToggleTab')} data-toggle="tab"{/if}{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if} id="{$childItem->getId()}">
+                                        <div class="list-item-content">
+                                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()} list-item-icon"></i>{/if}
+                                            <span class="list-item-label">{$childItem->getLabel()}</span>
+                                            {if $childItem->hasBadge()}<span class="list-item-badge">{$childItem->getBadge()}</span>{/if}
+                                        </div>
+                                        <i class="fas fa-chevron-right list-item-arrow"></i>
                                     </a>
                                 {else}
-                                    <div menuItemName="{$childItem->getName()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
-                                        {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                                        {$childItem->getLabel()}
-                                        {if $childItem->hasBadge()}&nbsp;<span class="badge">{$childItem->getBadge()}</span>{/if}
+                                    <div menuItemName="{$childItem->getName()}" class="panel-list-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
+                                        <div class="list-item-content">
+                                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()} list-item-icon"></i>{/if}
+                                            <span class="list-item-label">{$childItem->getLabel()}</span>
+                                            {if $childItem->hasBadge()}<span class="list-item-badge">{$childItem->getBadge()}</span>{/if}
+                                        </div>
                                     </div>
                                 {/if}
                             {/foreach}
                         </div>
                     {/if}
-                    <div class="panel-footer">
-                        {if $item->hasFooterHtml()}
+                    {if $item->hasFooterHtml()}
+                        <div class="panel-footer-enhanced">
                             {$item->getFooterHtml()}
-                        {/if}
-                    </div>
+                        </div>
+                    {/if}
                 </div>
             {/function}
 
