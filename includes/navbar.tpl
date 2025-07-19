@@ -14,8 +14,8 @@
                     <img src="{$logoUrl}" alt="{$companyname}" class="navbar-logo">
                 {else}
                     <div class="brand-container">
-                        <div class="brand-icon">
-                            <i class="fas fa-rocket"></i>
+                        <div class="brand-logo">
+                            <img src="{$WEB_ROOT}/templates/{$template}/images/logo.svg" alt="{$companyname}" class="navbar-logo">
                         </div>
                         <div class="brand-text">
                             <span class="brand-primary">DoubleSpeed</span><span class="brand-secondary">Host</span>
@@ -28,27 +28,29 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="ds-navbar-collapse">
             <ul class="nav navbar-nav">
-                {foreach $navbar as $item}
-                    <li menuItemName="{$item->getName()}" class="{if $item->hasChildren()}dropdown{/if}{if $item->getClass()} {$item->getClass()}{/if}" id="{$item->getId()}">
-                        <a {if $item->hasChildren()}class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"{else}href="{$item->getUri()}"{/if}{if $item->getAttribute('target')} target="{$item->getAttribute('target')}"{/if}>
-                            {if $item->hasIcon()}<i class="{$item->getIcon()}"></i>&nbsp;{/if}
-                            {$item->getLabel()}
-                            {if $item->hasBadge()}&nbsp;<span class="badge badge-primary">{$item->getBadge()}</span>{/if}
-                            {if $item->hasChildren()}&nbsp;<span class="caret"></span>{/if}
-                        </a>
-                        {if $item->hasChildren()}
-                            <ul class="dropdown-menu dropdown-menu-grid">
-                            {foreach $item->getChildren() as $childItem}
-                                <a href="{$childItem->getUri()}" class="dropdown-item" menuItemName="{$childItem->getName()}"{if $childItem->getClass()} data-class="{$childItem->getClass()}"{/if} id="{$childItem->getId()}"{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if}>
-                                    {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>{/if}
-                                    <span>{$childItem->getLabel()}</span>
-                                    {if $childItem->hasBadge()}<span class="badge badge-primary">{$childItem->getBadge()}</span>{/if}
-                                </a>
-                            {/foreach}
-                            </ul>
-                        {/if}
-                    </li>
-                {/foreach}
+                <li class="nav-item"><a href="{$WEB_ROOT}/" class="nav-link">Home</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Hosting <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{$WEB_ROOT}/store/shared-hosting" class="dropdown-item">Shared Hosting</a></li>
+                        <li><a href="{$WEB_ROOT}/store/vps-hosting" class="dropdown-item">VPS Hosting</a></li>
+                        <li><a href="{$WEB_ROOT}/store/dedicated-servers" class="dropdown-item">Dedicated Servers</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Domains <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{$WEB_ROOT}/store/domain-register" class="dropdown-item">Register Domain</a></li>
+                        <li><a href="{$WEB_ROOT}/store/domain-transfer" class="dropdown-item">Transfer Domain</a></li>
+                        <li><a href="{$WEB_ROOT}/domain-pricing" class="dropdown-item">Domain Pricing</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="{$WEB_ROOT}/supporttickets.php" class="nav-link">Support</a></li>
+                <li class="nav-item"><a href="{$WEB_ROOT}/contact.php" class="nav-link">Contact</a></li>
             </ul>
             
             <!-- Right side navbar items -->
