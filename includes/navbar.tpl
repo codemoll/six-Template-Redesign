@@ -37,15 +37,13 @@
                             {if $item->hasChildren()}&nbsp;<span class="caret"></span>{/if}
                         </a>
                         {if $item->hasChildren()}
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-grid">
                             {foreach $item->getChildren() as $childItem}
-                                <li menuItemName="{$childItem->getName()}"{if $childItem->getClass()} class="{$childItem->getClass()}"{/if} id="{$childItem->getId()}">
-                                    <a href="{$childItem->getUri()}"{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if}>
-                                        {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                                        {$childItem->getLabel()}
-                                        {if $childItem->hasBadge()}&nbsp;<span class="badge badge-primary">{$childItem->getBadge()}</span>{/if}
-                                    </a>
-                                </li>
+                                <a href="{$childItem->getUri()}" class="dropdown-item" menuItemName="{$childItem->getName()}"{if $childItem->getClass()} data-class="{$childItem->getClass()}"{/if} id="{$childItem->getId()}"{if $childItem->getAttribute('target')} target="{$childItem->getAttribute('target')}"{/if}>
+                                    {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>{/if}
+                                    <span>{$childItem->getLabel()}</span>
+                                    {if $childItem->hasBadge()}<span class="badge badge-primary">{$childItem->getBadge()}</span>{/if}
+                                </a>
                             {/foreach}
                             </ul>
                         {/if}
@@ -87,8 +85,8 @@
                             </div>
                             <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
-                        <ul class="dropdown-menu user-menu">
-                            <li class="user-menu-header">
+                        <ul class="dropdown-menu user-menu user-menu-grid">
+                            <li class="user-menu-header" style="grid-column: 1 / -1;">
                                 <div class="user-details">
                                     <div class="user-avatar-large">
                                         <i class="fas fa-user-circle"></i>
@@ -99,17 +97,39 @@
                                     </div>
                                 </div>
                             </li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=details"><i class="fas fa-user-edit"></i> <span>My Account</span></a></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=services"><i class="fas fa-server"></i> <span>My Services</span></a></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=domains"><i class="fas fa-globe"></i> <span>My Domains</span></a></li>
-                            <li><a href="{$WEB_ROOT}/supporttickets.php"><i class="fas fa-life-ring"></i> <span>Support Tickets</span></a></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=invoices"><i class="fas fa-file-invoice"></i> <span>Billing & Invoices</span></a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{$WEB_ROOT}/clientarea.php?action=security"><i class="fas fa-shield-alt"></i> <span>Security Settings</span></a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="{$WEB_ROOT}/logout.php" class="logout-link"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+                            <li role="separator" class="divider" style="grid-column: 1 / -1;"></li>
+                            <a href="{$WEB_ROOT}/clientarea.php" class="dropdown-item">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Dashboard</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/clientarea.php?action=details" class="dropdown-item">
+                                <i class="fas fa-user-edit"></i>
+                                <span>My Account</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/clientarea.php?action=services" class="dropdown-item">
+                                <i class="fas fa-server"></i>
+                                <span>My Services</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/clientarea.php?action=domains" class="dropdown-item">
+                                <i class="fas fa-globe"></i>
+                                <span>My Domains</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/supporttickets.php" class="dropdown-item">
+                                <i class="fas fa-life-ring"></i>
+                                <span>Support</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/clientarea.php?action=invoices" class="dropdown-item">
+                                <i class="fas fa-file-invoice"></i>
+                                <span>Billing</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/clientarea.php?action=security" class="dropdown-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Security</span>
+                            </a>
+                            <a href="{$WEB_ROOT}/logout.php" class="dropdown-item logout-link" style="grid-column: 1 / -1; border-top: 1px solid var(--ds-gray-700); margin-top: 0.5rem; padding-top: 1rem;">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
                         </ul>
                     </li>
                 {else}

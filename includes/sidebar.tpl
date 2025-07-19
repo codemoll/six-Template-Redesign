@@ -14,7 +14,7 @@
             </div>
         {/if}
         {if $item->hasChildren()}
-            <div class="list-group{if $item->getChildrenAttribute('class')} {$item->getChildrenAttribute('class')}{/if}">
+            <div class="sidebar-menu-grid">
                 {foreach $item->getChildren() as $childItem}
                     {if $childItem->getUri()}
                         <a menuItemName="{$childItem->getName()}"
@@ -37,13 +37,13 @@
                             {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
                             {if is_array($customActionData)}<span class="loading" style="display: none;"><i class="fas fa-spinner fa-spin"></i></span>{/if}
                             {if $childItem->hasIcon()}<i class="{$childItem->getIcon()} sidebar-menu-item-icon"></i>{/if}
-                            {$childItem->getLabel()}
+                            <span>{$childItem->getLabel()}</span>
                         </a>
                     {else}
                         <div menuItemName="{$childItem->getName()}" class="list-group-item{if $childItem->getClass()} {$childItem->getClass()}{/if}" id="{$childItem->getId()}">
                             {if $childItem->hasBadge()}<span class="badge">{$childItem->getBadge()}</span>{/if}
-                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>&nbsp;{/if}
-                            {$childItem->getLabel()}
+                            {if $childItem->hasIcon()}<i class="{$childItem->getIcon()}"></i>{/if}
+                            <span>{$childItem->getLabel()}</span>
                         </div>
                     {/if}
                 {/foreach}
